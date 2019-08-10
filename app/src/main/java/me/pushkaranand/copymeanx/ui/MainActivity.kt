@@ -2,6 +2,7 @@ package me.pushkaranand.copymeanx.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import me.pushkaranand.copymeanx.R
 
 class MainActivity : AppCompatActivity() {
 
