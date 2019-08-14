@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">CopyMean</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="slide_1_title">Copy and Mean</string>
+    <string name="slide_1_desc">Copy the word you want to know and get the meaning of it!!!!</string>
+    <string name="slide_2_title">Voice Search</string>
+    <string name="slide_2_desc">Tell your words with, we will get you meaning</string>
+    <string name="slide_3_title">Notification</string>
+    <string name="slide_3_desc">Get notified everyday with the meanings of Critical words</string>
+    <string name="slide_4_title">Scan</string>
+    <string name="slide_4_desc">Scan word and search</string>
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear
+        data
+    </string>
 </resources>

@@ -3,4 +3,27 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- Screens background color-->
+    <color name="bg_slider_screen1">#f4b241</color>
+    <color name="bg_slider_screen2">#16bc7d</color>
+    <color name="bg_slider_screen3">#203d8c</color>
+    <!-- dots inactive colors -->
+    <color name="intro_bullet_inactive">#cacaca</color>
+    <!-- dots active colors -->
+    <color name="intro_bullet_active">#8E44AD</color>
+    <array name="array_intro_bullet_inactive">
+        <item>@color/intro_bullet_inactive</item>
+        <item>@color/intro_bullet_inactive</item>
+        <item>@color/intro_bullet_inactive</item>
+        <item>@color/intro_bullet_inactive</item>
+    </array>
+    <array name="array_intro_bullet_active">
+        <item>@color/intro_bullet_active</item>
+        <item>@color/intro_bullet_active</item>
+        <item>@color/intro_bullet_active</item>
+        <item>@color/intro_bullet_active</item>
+    </array>
+
+
 </resources>
