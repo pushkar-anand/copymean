@@ -1,4 +1,4 @@
-package me.pushkaranand.copymeanx.data.oxford
+package me.pushkaranand.copymeanx.data.oxford.inner
 
 data class MetaData(
     val operation: String,
