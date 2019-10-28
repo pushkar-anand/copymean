@@ -19,3 +19,12 @@ const char *getAppKey() {
     return OXFORD_APP_KEY;
 }
 
+extern "C" JNIEXPORT jstring JNICALL
+Java_me_pushkaranand_copymean_data_DataRepository__getAppID(JNIEnv *env, jobject pthis) {
+    return env->NewStringUTF(getAppID());
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_me_pushkaranand_copymean_data_DataRepository__getAppKey(JNIEnv *env, jobject pthis) {
+    return env->NewStringUTF(getAppKey());
+}
