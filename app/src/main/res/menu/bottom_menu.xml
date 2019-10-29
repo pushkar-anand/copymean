@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/bottom_home"
+            android:id="@+id/homeFragment"
             android:icon="@drawable/ic_menu_home"
             android:title="@string/bottom_menu_title_home" />
 
     <item
-            android:id="@+id/bottom_search"
+            android:id="@+id/searchFragment"
             android:icon="@drawable/ic_menu_search"
             android:title="@string/bottom_menu_title_search" />
     <item
-            android:id="@+id/bottom_list"
+            android:id="@+id/listFragment"
             android:icon="@drawable/ic_menu_list"
             android:title="@string/bottom_menu_title_list" />
     <item
-            android:id="@+id/bottom_settings"
+            android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/bottom_menu_title_settings" />
 

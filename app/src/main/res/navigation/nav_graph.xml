@@ -9,7 +9,11 @@
             android:id="@+id/homeFragment"
             android:name="me.pushkaranand.copymeanx.ui.fragments.home.HomeFragment"
             android:label="fragment_home"
-            tools:layout="@layout/fragment_home" />
+            tools:layout="@layout/fragment_home">
+        <action
+                android:id="@+id/action_homeFragment_to_settingsFragment"
+                app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
             android:id="@+id/settingsFragment"
             android:name="me.pushkaranand.copymeanx.ui.fragments.settings.SettingsFragment"
