@@ -1,16 +1,32 @@
 package me.pushkaranand.copymeanx.api
 
-class Urls {
+object Urls {
 
-    companion object{
+    private const val PROTOCOL = "https"
+    private const val SEPERATOR = "://"
+    private const val DOMAIN = "dictionaryapi.com"
+    private const val API_VERSION = "v3"
+    private const val COLLEGIATE_API = "collegiate"
+    private const val LEARNERS_API = "learners"
 
-        private const val PROTOCOL = "https"
-        private const val SEPERATOR = "://"
-        private const val DOMAIN = "od-api.oxforddictionaries.com"
-        private const val API_ROUTE = "api"
+    const val BASE_URL = "$PROTOCOL$SEPERATOR$DOMAIN/api/$API_VERSION/references/"
 
-        const val BASE_URL = "$PROTOCOL$SEPERATOR$DOMAIN/$API_ROUTE"
+    private fun learnersAPIUrl() = "$BASE_URL$LEARNERS_API/json/"
+    private fun collegiateAPIUrl() = "$BASE_URL$COLLEGIATE_API/json/"
 
-        const val API_VERSION = "v2"
+    const val TYPE_COLLEGIATE = 100
+    const val TYPE_LEARNERS = 200
+
+
+    fun buildURL(word: String, type: Int): String {
+        val url: String = when (type) {
+            TYPE_COLLEGIATE ->
+                collegiateAPIUrl() + "/"
+            TYPE_LEARNERS ->
+                learnersAPIUrl() + "/"
+            else -> throw Exception("Invalid type supplied")
+        }
+        return url + word
     }
+
 }
