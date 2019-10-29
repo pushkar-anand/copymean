@@ -28,7 +28,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         firstRunHelper = FirstRunHelper(application)
         if (!firstRunHelper!!.isFirstRun()) {
-            startMainActivity()
+            startApp()
         }
 
         introViewPagerAdapter = IntroScreenViewPagerAdapter(this)
@@ -44,7 +44,7 @@ class WelcomeActivity : AppCompatActivity() {
 
 
         skipBtn.setOnClickListener {
-            startMainActivity()
+            startApp()
         }
 
         nextBtn.setOnClickListener {
@@ -55,12 +55,12 @@ class WelcomeActivity : AppCompatActivity() {
                 // move to next screen
                 introViewPager!!.currentItem = current
             } else {
-                startMainActivity()
+                startApp()
             }
         }
 
         // making notification bar transparent
-        setTransperantStatusBar()
+        setTransparentStatusBar()
     }
 
     private fun makeBottomBullets(currentPage: Int) {
@@ -78,7 +78,8 @@ class WelcomeActivity : AppCompatActivity() {
 
         for (i in 0 until introBullets!!.size) {
             introBullets!![i] = TextView(this)
-            introBullets!![i].text = HtmlCompat.fromHtml("&#9679;", HtmlCompat.FROM_HTML_MODE_LEGACY);
+            introBullets!![i].text =
+                HtmlCompat.fromHtml("&#9679;", HtmlCompat.FROM_HTML_MODE_LEGACY);
             introBullets!![i].textSize = 30F
             introBullets!![i].setTextColor(colorsInactive[currentPage])
             introBulletsLayout!!.addView(introBullets!![i])
@@ -89,41 +90,42 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
 
-    private var introViewPagerListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
+    private var introViewPagerListener: ViewPager.OnPageChangeListener =
+        object : ViewPager.OnPageChangeListener {
 
-        override fun onPageSelected(position: Int) {
+            override fun onPageSelected(position: Int) {
 
-            makeBottomBullets(position)
+                makeBottomBullets(position)
 
-            /*Based on the page position change the button text*/
+                /*Based on the page position change the button text*/
 
-            if (position == introViewPagerAdapter!!.layouts.size - 1) {
-                nextBtn.text = getString(R.string.next)
-                skipBtn.setVisibility(View.GONE)
-            } else {
-                nextBtn.text = getString(R.string.next)
-                skipBtn.setVisibility(View.VISIBLE)
+                if (position == introViewPagerAdapter!!.layouts.size - 1) {
+                    nextBtn.text = getString(R.string.next)
+                    skipBtn.setVisibility(View.GONE)
+                } else {
+                    nextBtn.text = getString(R.string.next)
+                    skipBtn.setVisibility(View.VISIBLE)
+                }
+            }
+
+            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
+                //Do nothing for now
+            }
+
+            override fun onPageScrollStateChanged(arg0: Int) {
+                //Do nothing for now
             }
         }
 
-        override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
-            //Do nothing for now
-        }
-
-        override fun onPageScrollStateChanged(arg0: Int) {
-            //Do nothing for now
-        }
-    }
-
-    private fun setTransperantStatusBar() {
+    private fun setTransparentStatusBar() {
         val window = window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.TRANSPARENT
     }
 
-    private fun startMainActivity() {
+    private fun startApp() {
         firstRunHelper?.firstRunDone()
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, BaseActivity::class.java)
         startActivity(intent)
         finish()
     }
