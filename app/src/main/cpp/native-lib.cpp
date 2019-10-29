@@ -11,7 +11,7 @@ const char *getLearnersAPIKey() {
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_me_pushkaranand_copymean_data_DataRepository__getCollegiateAPIKey(JNIEnv *env, jobject pthis) {
+Java_me_pushkaranand_copymeanx_data_DataRepository_getCollegiateAPIKey(JNIEnv *env, jobject pthis) {
     return env->NewStringUTF(getCollegiateAPIKey());
 }
 

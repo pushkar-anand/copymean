@@ -1,38 +1,32 @@
 package me.pushkaranand.copymeanx.data
 
 import android.content.Context
-import me.pushkaranand.copymeanx.api.Urls
 import me.pushkaranand.copymeanx.api.WebsterDictionary
-import retrofit2.Retrofit
 
-class DataRepository() {
 
-    private var websterDictionary: WebsterDictionary
+class DataRepository {
 
-    init {
-        System.loadLibrary("native-lib")
-        val retrofit = Retrofit.Builder()
-            .baseUrl(Urls.BASE_URL)
-            .build()
-
-        websterDictionary = retrofit.create(WebsterDictionary::class.java)
-    }
+    private val websterDictionary = WebsterDictionary.create()
 
     companion object {
+
+        init {
+            System.loadLibrary("native-lib")
+        }
 
         @Volatile
         private var instance: DataRepository? = null
 
-        fun getInstance(context: Context): DataRepository? {
+        fun getInstance(context: Context): DataRepository {
             return instance ?: synchronized(DataRepository::class.java) {
                 if (instance == null) {
                     instance = DataRepository()
                 }
-                return instance
+                return instance!!
             }
         }
     }
 
-    private external fun getAppID(): String
-    private external fun getAppKey(): String
+    private external fun getCollegiateAPIKey(): String
+    private external fun getLearnersAPIKey(): String
 }
