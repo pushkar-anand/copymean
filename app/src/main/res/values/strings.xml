@@ -18,10 +18,19 @@
         data
     </string>
 
+    <!--BottomMenu-->
     <string name="bottom_menu_title_home">Home</string>
     <string name="bottom_menu_title_search">Search</string>
     <string name="bottom_menu_title_list">List</string>
     <string name="bottom_menu_title_settings">Settings</string>
+
+    <!--Settings-->
+    <string name="title_category_clipboard">Clipboard</string>
+
+    <string name="title_category_notification">Notifications</string>
+    <string name="key_daily_word_notify">notify_daily_word</string>
+    <string name="title_daily_word_notify">Daily Reminder</string>
+    <string name="summary_daily_word_notify">Get notifications about the day\'s word everyday.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
