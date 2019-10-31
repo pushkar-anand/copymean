@@ -26,13 +26,21 @@
 
     <!--Settings-->
     <string name="title_category_clipboard">Clipboard</string>
+    <string name="key_clipboard_monitor">clipboard_monitor</string>
+    <string name="title_clipboard_monitor">Clipboard Monitor</string>
+    <string name="summary_clipboard_monitor">Get notified of meanings of words you copy.</string>
 
     <string name="title_category_notification">Notifications</string>
     <string name="key_daily_word_notify">notify_daily_word</string>
     <string name="title_daily_word_notify">Daily Reminder</string>
     <string name="summary_daily_word_notify">Get notifications about the day\'s word everyday.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_sticky_name">Sticky Notifications</string>
+    <string name="notification_channel_sticky_description">Sticky notifications</string>
+
+    <string name="notification_clipboard_sticky_title">CopyMean is running</string>
+    <string name="notification_clipboard_sticky_content">CopyMean is tracking your clipboard.</string>
 
 </resources>

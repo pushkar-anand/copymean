@@ -13,6 +13,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <service
+                android:name=".services.ClipboardMonitor"
+                android:enabled="true"
+                android:exported="false" />
 
         <activity android:name=".ui.BaseActivity">
             <intent-filter>
@@ -22,8 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.WelcomeActivity" />
-
-
     </application>
 
 </manifest>
