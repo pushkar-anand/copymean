@@ -11,9 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_base.*
 import me.pushkaranand.copymeanx.R
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
@@ -27,6 +25,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(requireActivity(), R.id.base_fragment)
-        bottomNavView.setupWithNavController(navController)
+        val bottomNav = requireActivity().bottomNavView
+        bottomNav.setupWithNavController(navController)
+
     }
 }
