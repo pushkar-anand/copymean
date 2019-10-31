@@ -15,7 +15,7 @@ import me.pushkaranand.copymeanx.utils.Notifications
 class ClipboardMonitor : Service() {
 
     companion object {
-        private var isMonitoringOn = false
+        var isMonitoringOn = false
     }
 
     private lateinit var clipboardManager: ClipboardManager
