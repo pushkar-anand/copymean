@@ -15,11 +15,21 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+
+        <receiver
+                android:name=".receivers.BootReceiver"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
         <service
                 android:name=".services.ClipboardMonitor"
                 android:enabled="true"
-                android:process="@string/clipboard_service_process_name"
-                android:exported="false" />
+                android:exported="false"
+                android:process="@string/clipboard_service_process_name" />
 
         <activity android:name=".ui.BaseActivity">
             <intent-filter>
