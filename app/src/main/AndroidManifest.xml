@@ -4,6 +4,7 @@
         package="me.pushkaranand.copymeanx">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
             android:allowBackup="true"
@@ -16,6 +17,7 @@
         <service
                 android:name=".services.ClipboardMonitor"
                 android:enabled="true"
+                android:process="@string/clipboard_service_process_name"
                 android:exported="false" />
 
         <activity android:name=".ui.BaseActivity">
