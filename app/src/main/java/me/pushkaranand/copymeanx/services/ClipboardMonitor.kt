@@ -1,11 +1,13 @@
 package me.pushkaranand.copymeanx.services
 
 import android.app.Service
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.preference.PreferenceManager
 import me.pushkaranand.copymeanx.R
 import me.pushkaranand.copymeanx.utils.ClipboardHelper
@@ -46,11 +48,26 @@ class ClipboardMonitor : Service() {
     }
 
     private val clipChangedListener = ClipboardManager.OnPrimaryClipChangedListener {
-        ClipboardHelper.handleClipData(clipboardManager.primaryClip)
-        isMonitoringOn = true
+        Log.d(javaClass.simpleName, "PrimaryClipChanged")
+        for (i in 0 until clipboardManager.primaryClipDescription!!.mimeTypeCount) {
+            Log.d(
+                javaClass.simpleName,
+                "MIME: " + clipboardManager.primaryClipDescription!!.getMimeType(i)
+            )
+        }
+
+        val isTextData =
+            clipboardManager.primaryClipDescription!!.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN) ||
+                    clipboardManager.primaryClipDescription!!.hasMimeType(ClipDescription.MIMETYPE_TEXT_HTML)
+        if (isTextData) {
+            ClipboardHelper.handleClipData(clipboardManager.primaryClip)
+        } else {
+            Log.d(this.javaClass.simpleName, "Clipboard doesn't have text data.")
+        }
     }
 
     private fun startClipboardMonitoring() {
+        isMonitoringOn = true
         clipboardManager.addPrimaryClipChangedListener(clipChangedListener)
     }
 
