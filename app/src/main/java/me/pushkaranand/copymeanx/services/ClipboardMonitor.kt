@@ -8,8 +8,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
-import androidx.preference.PreferenceManager
-import me.pushkaranand.copymeanx.R
 import me.pushkaranand.copymeanx.utils.ClipboardHelper
 import me.pushkaranand.copymeanx.utils.Notifications
 
@@ -43,8 +41,7 @@ class ClipboardMonitor : Service() {
     }
 
     private fun clipboardMonitoringSettingsOn(): Boolean {
-        val prefManager = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        return prefManager.getBoolean(getString(R.string.key_clipboard_monitor), false)
+        return ClipboardHelper.isClipboardMonitoringSettingsOn(applicationContext)
     }
 
     private val clipChangedListener = ClipboardManager.OnPrimaryClipChangedListener {
