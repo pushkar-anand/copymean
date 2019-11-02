@@ -2,6 +2,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/title_category_clipboard">
+        <SwitchPreference
+                android:defaultValue="false"
+                android:key="@string/key_clipboard_monitor"
+                android:summary="@string/summary_clipboard_monitor"
+                android:title="@string/title_clipboard_monitor" />
 
     </PreferenceCategory>
 

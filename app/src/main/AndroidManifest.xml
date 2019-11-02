@@ -4,6 +4,8 @@
         package="me.pushkaranand.copymeanx">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
             android:allowBackup="true"
@@ -14,10 +16,6 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <receiver
-                android:name=".AlarmReceiver"
-                android:enabled="true" />
-
         <activity android:name=".ui.BaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +24,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.WelcomeActivity" />
+
+        <receiver
+                android:name=".receivers.BootReceiver"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+                android:name=".AlarmReceiver"
+                android:enabled="true" />
+
+        <service
+                android:name=".services.ClipboardMonitor"
+                android:enabled="true"
+                android:exported="false"
+                android:process="@string/clipboard_service_process_name" />
+
+
     </application>
 
 </manifest>
