@@ -1,4 +1,4 @@
-package me.pushkaranand.copymeanx
+package me.pushkaranand.copymeanx.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -35,7 +35,7 @@
         </receiver>
 
         <receiver
-                android:name=".AlarmReceiver"
+                android:name=".receivers.AlarmReceiver"
                 android:enabled="true" />
 
         <service
