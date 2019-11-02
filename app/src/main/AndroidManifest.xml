@@ -16,6 +16,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
+        <!-- Activities -->
         <activity android:name=".ui.BaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +26,7 @@
         </activity>
         <activity android:name=".ui.WelcomeActivity" />
 
+        <!-- Receivers -->
         <receiver
                 android:name=".receivers.BootReceiver"
                 android:enabled="true"
@@ -38,6 +40,7 @@
                 android:name=".receivers.AlarmReceiver"
                 android:enabled="true" />
 
+        <!-- Services -->
         <service
                 android:name=".services.ClipboardMonitor"
                 android:enabled="true"
