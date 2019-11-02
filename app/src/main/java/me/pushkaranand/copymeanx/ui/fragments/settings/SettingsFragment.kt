@@ -1,8 +1,6 @@
 package me.pushkaranand.copymeanx.ui.fragments.settings
 
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.Navigation
@@ -11,7 +9,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import kotlinx.android.synthetic.main.activity_base.*
 import me.pushkaranand.copymeanx.R
-import me.pushkaranand.copymeanx.services.ClipboardMonitor
+import me.pushkaranand.copymeanx.utils.ClipboardHelper
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -31,19 +29,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun setupListeners() {
+        setupClipMonitorSwitchListener()
+    }
+
+    private fun setupClipMonitorSwitchListener() {
         clipMonitorSwitch.setOnPreferenceChangeListener { _, newValue ->
             val state = newValue as Boolean
-            val clipMonitorIntent = Intent(requireContext(), ClipboardMonitor::class.java)
             if (state) {
-                if (!ClipboardMonitor.isMonitoringOn) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        requireContext().startForegroundService(clipMonitorIntent)
-                    } else {
-                        requireContext().startService(clipMonitorIntent)
-                    }
-                }
+                ClipboardHelper.startClipboardMonitoring(requireContext())
             } else {
-                requireContext().stopService(clipMonitorIntent)
+                ClipboardHelper.stopClipboardMonitoring(requireContext())
             }
             true
         }

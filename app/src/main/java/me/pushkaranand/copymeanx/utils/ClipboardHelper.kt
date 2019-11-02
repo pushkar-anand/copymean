@@ -1,11 +1,15 @@
 package me.pushkaranand.copymeanx.utils
 
 import android.content.ClipData
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.util.Log
+import me.pushkaranand.copymeanx.services.ClipboardMonitor
 
 object ClipboardHelper {
 
-    var lastCopiedData = ""
+    private var lastCopiedData = ""
     private const val TAG = "CLIPBOARD HELPER"
 
     fun handleClipData(clipData: ClipData?) {
@@ -26,6 +30,24 @@ object ClipboardHelper {
         if (copiedText.matches(regex)) {
             // TODO get meaning an display bubble.
         }
+    }
+
+    private fun getClipboardServiceIntent(context: Context): Intent {
+        return Intent(context, ClipboardMonitor::class.java)
+    }
+
+    fun startClipboardMonitoring(context: Context) {
+        if (!ClipboardMonitor.isMonitoringOn) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(getClipboardServiceIntent(context))
+            } else {
+                context.startService(getClipboardServiceIntent(context))
+            }
+        }
+    }
+
+    fun stopClipboardMonitoring(context: Context) {
+        context.stopService(getClipboardServiceIntent(context))
     }
 
 
